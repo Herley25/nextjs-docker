@@ -14,6 +14,21 @@ pnpm dev
 bun dev
 ```
 
+Antes de inicializar o projeto em sua máquina, você poderá testar a imagem docker em ambientes separados
+```
+No diretório, onde encontra-se o arquivo nextjs-docker/docker/development/Dockerfile
+
+1. comando para teste em desenvolvimento;
+
+- docker-compose down --volumes --remove-orphans
+- docker-compose up --build
+
+2. comando para teste em produção;
+
+- docker-compose down --volumes --remove-orphans
+- docker-compose up --build
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
