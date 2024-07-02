@@ -1,0 +1,15 @@
+# Versão do formato do arquivo Docker Compose. A versão 3 é amplamente utilizada.
+version: "3"
+
+# Define os serviços que serão executados no contêiner.
+services:
+  nextapp-development:  # Nome do serviço. Pode ser qualquer nome que você escolher.
+    build:  # Configuração de build do Docker.
+      context: ../..  # Caminho relativo ao diretório raiz do projeto. Este é o diretório base a partir do qual o Docker construirá a imagem.
+      dockerfile: docker/development/Dockerfile  # Especifica o Dockerfile a ser usado para construir a imagem de desenvolvimento. O caminho é relativo ao contexto de build.
+    ports:  # Define as portas que serão mapeadas do contêiner para a máquina host.
+      - "3000:3000"  # Mapeia a porta 3000 do contêiner para a porta 3000 da máquina host.
+    volumes:  # Define os volumes a serem montados dentro do contêiner.
+      - ../..:/app  # Mapeia o diretório raiz do projeto no host para o diretório /app dentro do contêiner, permitindo que o código seja sincronizado automaticamente.
+    environment:  # Define variáveis de ambiente para o contêiner.
+      - NODE_ENV=development  # Define a variável de ambiente NODE_ENV como "development", indicando que o Node.js deve executar em modo de desenvolvimento.
